@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Music Crosslinker</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div id="app">
+    <div id="header">
+      <span class="logo">🎵</span>
+      <span class="title">Music Crosslinker</span>
+    </div>
+
+    <!-- Default view -->
+    <div id="view-default">
+      <p class="subtitle">Hear a song nearby?</p>
+      <button id="btn-listen">
+        <span id="mic-icon">🎤</span>
+        <span id="btn-label">Listen & Identify</span>
+      </button>
+      <p class="hint">Or visit a track on Spotify, YouTube Music, Apple Music, etc. to see it in action.</p>
+    </div>
+
+    <!-- Listening view -->
+    <div id="view-listening" class="hidden">
+      <div class="pulse-ring"></div>
+      <p id="listen-status">Listening...</p>
+      <button id="btn-cancel">Cancel</button>
+    </div>
+
+    <!-- Results view -->
+    <div id="view-results" class="hidden">
+      <div id="track-info">
+        <div id="track-title">—</div>
+        <div id="track-artist">—</div>
+      </div>
+      <div id="results-links"></div>
+      <button id="btn-retry">🎤 Listen Again</button>
+    </div>
+
+    <!-- Error view -->
+    <div id="view-error" class="hidden">
+      <p id="error-msg">Could not identify the track.</p>
+      <button id="btn-retry-error">Try Again</button>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

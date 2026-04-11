@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Music Crosslinker",
+  "version": "1.0.0",
+  "description": "Find any song on Spotify, YouTube Music, Apple Music, SoundCloud and more. Includes Shazam-like mic detection.",
+  "permissions": [
+    "activeTab",
+    "microphone"
+  ],
+  "host_permissions": [
+    "https://api.song.link/*",
+    "https://api.audd.io/*"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://open.spotify.com/*",
+        "https://music.youtube.com/*",
+        "https://www.youtube.com/*",
+        "https://music.apple.com/*",
+        "https://soundcloud.com/*",
+        "https://tidal.com/*",
+        "https://www.deezer.com/*",
+        "https://music.amazon.com/*"
+      ],
+      "js": ["content/content.js"],
+      "css": ["content/content.css"]
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
