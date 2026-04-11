@@ -40,6 +40,27 @@
       <button id="btn-retry">🎤 Listen Again</button>
     </div>
 
+    <!-- Permission view -->
+    <div id="view-permission" class="hidden">
+      <div class="perm-icon">🎤</div>
+      <p class="perm-title">Microphone Access Needed</p>
+      <p class="perm-desc">Click the button below and allow microphone access when Chrome asks.</p>
+      <button id="btn-grant">Allow Microphone</button>
+    </div>
+
+    <!-- Permission denied view -->
+    <div id="view-denied" class="hidden">
+      <div class="perm-icon">🚫</div>
+      <p class="perm-title">Microphone Blocked</p>
+      <p class="perm-desc">You previously blocked the mic. To fix this:</p>
+      <ol class="perm-steps">
+        <li>Click the 🔒 lock icon in Chrome's address bar</li>
+        <li>Find <strong>Microphone</strong></li>
+        <li>Change it to <strong>Allow</strong></li>
+        <li>Reopen this extension</li>
+      </ol>
+    </div>
+
     <!-- Error view -->
     <div id="view-error" class="hidden">
       <p id="error-msg">Could not identify the track.</p>

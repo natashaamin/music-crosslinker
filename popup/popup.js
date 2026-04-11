@@ -13,10 +13,12 @@ const PLATFORMS = [
 
 // Views
 const views = {
-  default:   document.getElementById("view-default"),
-  listening: document.getElementById("view-listening"),
-  results:   document.getElementById("view-results"),
-  error:     document.getElementById("view-error"),
+  default:    document.getElementById("view-default"),
+  listening:  document.getElementById("view-listening"),
+  results:    document.getElementById("view-results"),
+  error:      document.getElementById("view-error"),
+  permission: document.getElementById("view-permission"),
+  denied:     document.getElementById("view-denied"),
 };
 
 function showView(name) {
@@ -25,10 +27,42 @@ function showView(name) {
 }
 
 // Buttons
-document.getElementById("btn-listen").addEventListener("click", startListening);
+document.getElementById("btn-listen").addEventListener("click", checkMicAndListen);
+document.getElementById("btn-grant").addEventListener("click", requestMicPermission);
 document.getElementById("btn-cancel").addEventListener("click", () => showView("default"));
-document.getElementById("btn-retry").addEventListener("click", startListening);
-document.getElementById("btn-retry-error").addEventListener("click", startListening);
+document.getElementById("btn-retry").addEventListener("click", checkMicAndListen);
+document.getElementById("btn-retry-error").addEventListener("click", checkMicAndListen);
+
+async function checkMicAndListen() {
+  try {
+    const result = await navigator.permissions.query({ name: "microphone" });
+    if (result.state === "granted") {
+      startListening();
+    } else if (result.state === "denied") {
+      showView("denied");
+    } else {
+      // "prompt" state — show permission request screen
+      showView("permission");
+    }
+  } catch {
+    // permissions API not supported, try directly
+    startListening();
+  }
+}
+
+async function requestMicPermission() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    stream.getTracks().forEach(t => t.stop()); // stop immediately, just needed for permission
+    startListening();
+  } catch (err) {
+    if (err.name === "NotAllowedError") {
+      showView("denied");
+    } else {
+      showError("Could not access microphone. Please try again.");
+    }
+  }
+}
 
 let mediaRecorder = null;
 let audioChunks = [];
@@ -61,7 +95,11 @@ async function startListening() {
     }, 8000);
 
   } catch (err) {
-    showError("Microphone access denied.");
+    if (err.name === "NotAllowedError") {
+      showView("denied");
+    } else {
+      showError("Could not access microphone. Please try again.");
+    }
   }
 }
 
