@@ -13,14 +13,30 @@
       <span class="title">Music Crosslinker</span>
     </div>
 
-    <!-- Default view -->
-    <div id="view-default">
-      <p class="subtitle">Hear a song nearby?</p>
+    <!-- Setup view -->
+    <div id="view-setup" class="hidden">
+      <div class="setup-icon">⚙️</div>
+      <p class="setup-title">Setup Required</p>
+      <p class="setup-desc">Add your API keys to start identifying songs.</p>
+      <button id="btn-open-settings">Open Settings</button>
+    </div>
+
+    <!-- Home view -->
+    <div id="view-home" class="hidden">
       <button id="btn-listen">
-        <span id="mic-icon">🎤</span>
-        <span id="btn-label">Listen & Identify</span>
+        <span>🎵</span>
+        <span>Listen & Identify</span>
       </button>
-      <p class="hint">Or visit a track on Spotify, YouTube Music, Apple Music, etc. to see it in action.</p>
+      <p id="listen-hint" class="btn-hint">Music playing nearby</p>
+      <div id="listen-divider" class="divider">or</div>
+      <button id="btn-speak" class="btn-secondary">
+        <span>🎤</span>
+        <span>Speak your description</span>
+      </button>
+      <p class="btn-hint">Song stuck in your head</p>
+      <div class="divider">or</div>
+      <textarea id="ai-input" placeholder="Type lyrics or describe the song..."></textarea>
+      <button id="btn-find">Find Song</button>
     </div>
 
     <!-- Listening view -->
@@ -37,28 +53,16 @@
         <div id="track-artist">—</div>
       </div>
       <div id="results-links"></div>
-      <button id="btn-retry">🎤 Listen Again</button>
-    </div>
-
-    <!-- Permission view -->
-    <div id="view-permission" class="hidden">
-      <div class="perm-icon">🎤</div>
-      <p class="perm-title">Microphone Access Needed</p>
-      <p class="perm-desc">Click the button below and allow microphone access when Chrome asks.</p>
-      <button id="btn-grant">Allow Microphone</button>
+      <button id="btn-retry">Search Again</button>
     </div>
 
     <!-- Permission denied view -->
     <div id="view-denied" class="hidden">
       <div class="perm-icon">🚫</div>
       <p class="perm-title">Microphone Blocked</p>
-      <p class="perm-desc">You previously blocked the mic. To fix this:</p>
-      <ol class="perm-steps">
-        <li>Click the 🔒 lock icon in Chrome's address bar</li>
-        <li>Find <strong>Microphone</strong></li>
-        <li>Change it to <strong>Allow</strong></li>
-        <li>Reopen this extension</li>
-      </ol>
+      <p class="perm-desc">Paste this in your address bar to re-enable:</p>
+      <p class="perm-url" id="perm-url-text"></p>
+      <button id="btn-copy-url">Copy Link</button>
     </div>
 
     <!-- Error view -->

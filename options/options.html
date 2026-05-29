@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Music Crosslinker — Settings</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <span class="logo">🎵</span>
+      <span class="title">Music Crosslinker — Settings</span>
+    </div>
+
+    <p class="intro">Enter your API keys below. They are stored locally on your device and never sent anywhere except the respective APIs.</p>
+
+    <div class="field">
+      <label for="elevenlabs-key">
+        ElevenLabs API Key <span class="required">*</span>
+      </label>
+      <p class="field-desc">Used to transcribe your spoken descriptions. <a href="https://elevenlabs.io/app/settings/api-keys" target="_blank">Get key →</a></p>
+      <input type="password" id="elevenlabs-key" placeholder="sk_..." autocomplete="off" />
+    </div>
+
+    <div class="field">
+      <label for="anthropic-key">
+        Anthropic API Key <span class="required">*</span>
+      </label>
+      <p class="field-desc">Used to identify songs from descriptions. <a href="https://console.anthropic.com/settings/keys" target="_blank">Get key →</a></p>
+      <input type="password" id="anthropic-key" placeholder="sk-ant-..." autocomplete="off" />
+    </div>
+
+    <div class="field">
+      <label for="audd-key">
+        AudD API Key <span class="optional">(optional)</span>
+      </label>
+      <p class="field-desc">Required for "Listen & Identify" — Shazam-like detection. <a href="https://dashboard.audd.io" target="_blank">Get key →</a></p>
+      <input type="password" id="audd-key" placeholder="..." autocomplete="off" />
+    </div>
+
+    <button id="btn-save">Save</button>
+    <p id="save-status"></p>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

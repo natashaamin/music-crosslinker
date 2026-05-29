@@ -5,11 +5,24 @@
   "description": "Find any song on Spotify, YouTube Music, Apple Music, SoundCloud and more. Includes Shazam-like mic detection.",
   "permissions": [
     "activeTab",
-    "microphone"
+    "microphone",
+    "tabs",
+    "offscreen",
+    "storage"
   ],
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
   "host_permissions": [
     "https://api.song.link/*",
-    "https://api.audd.io/*"
+    "https://api.audd.io/*",
+    "https://api.anthropic.com/*",
+    "https://api.elevenlabs.io/*",
+    "https://itunes.apple.com/*"
   ],
   "action": {
     "default_popup": "popup/popup.html",

@@ -32,7 +32,7 @@ body {
   text-align: center;
 }
 
-#btn-listen {
+#btn-speak {
   width: 100%;
   padding: 12px;
   background: #1db954;
@@ -49,7 +49,7 @@ body {
   transition: background 0.2s;
 }
 
-#btn-listen:hover { background: #1ed760; }
+#btn-speak:hover { background: #1ed760; }
 
 .hint {
   font-size: 11px;
@@ -58,6 +58,115 @@ body {
   margin-top: 12px;
   line-height: 1.5;
 }
+
+.divider {
+  text-align: center;
+  color: #444;
+  font-size: 11px;
+  margin: 10px 0;
+  position: relative;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: #222;
+}
+
+.divider::before { left: 0; }
+.divider::after  { right: 0; }
+
+.btn-secondary {
+  width: 100%;
+  padding: 9px;
+  background: transparent;
+  border: 1px solid #333;
+  border-radius: 10px;
+  color: #aaa;
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-secondary:hover {
+  border-color: #555;
+  color: #fff;
+}
+
+/* Setup view */
+#view-setup {
+  text-align: center;
+  padding: 12px 0;
+}
+
+.setup-icon { font-size: 36px; margin-bottom: 10px; }
+.setup-title { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+.setup-desc { font-size: 12px; color: #aaa; margin-bottom: 16px; line-height: 1.5; }
+
+#btn-open-settings {
+  width: 100%;
+  padding: 10px;
+  background: #1db954;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#btn-open-settings:hover { background: #1ed760; }
+
+/* Home view */
+#view-home { display: flex; flex-direction: column; gap: 8px; }
+
+.btn-hint {
+  font-size: 11px;
+  color: #555;
+  text-align: center;
+  margin-top: -4px;
+}
+
+#ai-input {
+  width: 100%;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 12px;
+  padding: 8px 10px;
+  resize: none;
+  height: 80px;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+#ai-input:focus {
+  outline: none;
+  border-color: #555;
+}
+
+#ai-input::placeholder { color: #555; }
+
+#btn-find {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid #333;
+  border-radius: 10px;
+  color: #aaa;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+#btn-find:hover { border-color: #555; color: #fff; }
 
 /* Listening view */
 #view-listening {
@@ -156,7 +265,7 @@ body {
 }
 
 /* Permission views */
-#view-permission, #view-denied {
+#view-denied {
   text-align: center;
   padding: 8px 0;
 }
@@ -179,31 +288,30 @@ body {
   line-height: 1.5;
 }
 
-.perm-steps {
-  text-align: left;
-  font-size: 12px;
-  color: #aaa;
-  padding-left: 18px;
-  line-height: 1.8;
+.perm-url {
+  font-size: 11px;
+  color: #1db954;
+  background: #1a1a1a;
+  border-radius: 6px;
+  padding: 6px 8px;
+  word-break: break-all;
+  user-select: all;
+  margin-bottom: 10px;
 }
 
-.perm-steps strong {
-  color: #fff;
-}
-
-#btn-grant {
+#btn-copy-url {
   width: 100%;
-  padding: 10px;
+  padding: 8px;
   background: #1db954;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   color: #fff;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s;
 }
 
-#btn-grant:hover { background: #1ed760; }
+#btn-copy-url:hover { background: #1ed760; }
 
-.hidden { display: none; }
+.hidden { display: none !important; }
